@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiberxavfsizlik va IP Manzil Aniqlash</title>
+    <meta name="description" content="Internetdagi firibgarlarni IP manzillarini aniqlash platformasi">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+        }
+        .info-box {
+            background-color: #e8f4fc;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            background-color: white;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin: 10px;
+            flex: 1;
+            min-width: 150px;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kiberxavfsizlik va IP Manzil Aniqlash</h1>
+        
+        <div class="info-box">
+            <p><strong>Platforma maqsadi:</strong> Internetdagi firibgarlik faoliyatini aniqlash va ularning IP manzillarini yig'ish orqali jinoyatlarga barvaqt chek qo'yish.</p>
+        </div>
+        
+        <h2>Qanday ishlaydi?</h2>
+        <p>Ushbu platforma maxsus texnologiyalar yordamida saytga kirgan foydalanuvchilarning IP manzillarini aniqlaydi. Quyidagi rasmga kirish harakat qilgan har bir foydalanuvchi haqida ma'lumotlar yig'iladi va xavfli harakatlar aniqlansa, tegishli organlarga xabar beriladi.</p>
+        
+        <div class="warning">
+            <p><strong>Eslatma:</strong> Bu platforma faqat qonuniy maqsadlar uchun ishlatiladi. O'zingizning xavfsizligingizni ta'minlash uchun faqat ishonchli manbalardan foydalaning.</p>
+        </div>
+        
+        <h2>Monitoring Rasm</h2>
+        <div class="image-container">
+            <p>Quyidagi rasmga kirish har qanday harakatni kuzatish va IP manzilini aniqlash imkoniyatini beradi:</p>
+            <img src="image.jpg" alt="Monitoring Rasm" id="tracking-image" onerror="handleImageError()">
+            <p style="font-size: 14px; color: #666; margin-top: 10px;">Rasm yuklangan paytda IP manzilingiz aniqlanadi va monitoring tizimiga qo'shiladi.</p>
+        </div>
+        
+        <h2>Statistika</h2>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value" id="total-visits">0</div>
+                <div class="stat-label">Umumiy tashriflar</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="ip-count">0</div>
+                <div class="stat-label">Aniqlangan IP manzillar</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="today-count">0</div>
+                <div class="stat-label">Bugungi tashriflar</div>
+            </div>
+        </div>
+        
+        <h2>Platforma imkoniyatlari</h2>
+        <ul>
+            <li>Foydalanuvchi IP manzilini aniqlash</li>
+            <li>Foydalanuvchi brauzeri va qurilma haqida ma'lumot</li>
+            <li>Kirish vaqti va sanasi</li>
+            <li>Shubhali harakatlarni aniqlash</li>
+            <li>Telegram bot orqali darhol xabar berish</li>
+        </ul>
+        
+        <footer>
+            <p>© 2023 Kiberxavfsizlik va IP Manzil Aniqlash Platformasi. Barcha huquqlar himoyalangan.</p>
+            <p>Bu platforma faqat qonuniy monitoring maqsadlarida ishlatiladi.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Rasm yuklanganda IP manzilni yig'ish va Telegramga yuborish
+        document.getElementById('tracking-image').addEventListener('load', function() {
+            // IP manzilni olish
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const ip = data.ip;
+                    
+                    // Foydalanuvchi haqida qo'shimcha ma'lumotlar
+                    const userAgent = navigator.userAgent;
+                    const referrer = document.referrer || "To'g'ridan-to'g'ri kirish";
+                    const time = new Date().toLocaleString();
+                    const pageUrl = window.location.href;
+                    
+                    // Telegram botga ma'lumot yuborish
+                    sendToTelegram(ip, userAgent, referrer, time, pageUrl);
+                    
+                    // Statistikani yangilash
+                    updateStatistics();
+                })
+                .catch(error => {
+                    console.error('IP aniqlashda xatolik:', error);
+                });
+        });
+        
+        // Telegram botga ma'lumot yuborish
+        function sendToTelegram(ip, userAgent, referrer, time, pageUrl) {
+            // Telegram Bot API tokeni
+            const botToken = "8191176508:AAFbcasMSJ04JExipJXIrwgAu-sFi9zTnMs";
+            // Chat ID (o'z chat ID'ingizni qo'shing, agar kerak bo'lsa)
+            const chatId = "YOUR_CHAT_ID"; // Bu joyga o'zingizning chat ID'ingizni qo'ying
+            
+            const message = `📡 YANGI IP MANZIL ANIQLANDI 📡\n\n` +
+                           `🕐 Vaqt: ${time}\n` +
+                           `🌐 IP Manzil: ${ip}\n` +
+                           `🔗 Sana: ${pageUrl}\n` +
+                           `📱 Brauzer: ${userAgent}\n` +
+                           `🔙 Kelib chiqishi: ${referrer}\n` +
+                           `⚠️ Rasm yuklandi: image.jpg`;
+            
+            // Agar chatId mavjud bo'lsa, Telegramga yuborish
+            if (chatId && chatId !== "YOUR_CHAT_ID") {
+                const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+                
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Telegramga ma\'lumot yuborildi:', data);
+                })
+                .catch(error => {
+                    console.error('Telegramga yuborishda xatolik:', error);
+                });
+            } else {
+                // Chat ID bo'lmasa, konsolga chiqarish
+                console.log("Telegram xabari (chat ID ko'rsatilmagan):");
+                console.log(message);
+            }
+        }
+        
+        // Statistikani yangilash
+        function updateStatistics() {
+            // Umumiy tashriflar
+            let totalVisits = localStorage.getItem('totalVisits') || 0;
+            totalVisits = parseInt(totalVisits) + 1;
+            localStorage.setItem('totalVisits', totalVisits);
+            document.getElementById('total-visits').textContent = totalVisits;
+            
+            // Bugungi tashriflar
+            const today = new Date().toDateString();
+            let todayVisits = localStorage.getItem('todayVisits') || 0;
+            let lastVisitDate = localStorage.getItem('lastVisitDate');
+            
+            if (lastVisitDate === today) {
+                todayVisits = parseInt(todayVisits) + 1;
+            } else {
+                todayVisits = 1;
+                localStorage.setItem('lastVisitDate', today);
+            }
+            
+            localStorage.setItem('todayVisits', todayVisits);
+            document.getElementById('today-count').textContent = todayVisits;
+            
+            // IP manzillar soni (bu oddiy demo versiya, haqiqiy IP manzillarni saqlamaydi)
+            let ipCount = localStorage.getItem('ipCount') || 0;
+            ipCount = parseInt(ipCount) + 1;
+            localStorage.setItem('ipCount', ipCount);
+            document.getElementById('ip-count').textContent = ipCount;
+        }
+        
+        // Rasm yuklanmagan holatda
+        function handleImageError() {
+            document.getElementById('tracking-image').src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400'><rect width='100%' height='100%' fill='%23f0f0f0'/><text x='50%' y='50%' font-family='Arial' font-size='16' fill='%23666' text-anchor='middle'>image.jpg topilmadi</text></svg>";
+            console.warn("image.jpg fayli topilmadi. Iltimos, rasm faylini index.html bilan bir papkaga qo'ying.");
+        }
+        
+        // Sahifa yuklanganda statistikani ko'rsatish
+        document.addEventListener('DOMContentLoaded', function() {
+            // Statistikani yuklash
+            const totalVisits = localStorage.getItem('totalVisits') || 0;
+            const todayVisits = localStorage.getItem('todayVisits') || 0;
+            const ipCount = localStorage.getItem('ipCount') || 0;
+            
+            document.getElementById('total-visits').textContent = totalVisits;
+            document.getElementById('today-count').textContent = todayVisits;
+            document.getElementById('ip-count').textContent = ipCount;
+        });
+    </script>
+</body>
+</html>
